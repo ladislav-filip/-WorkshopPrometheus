@@ -12,3 +12,10 @@ scrape_configs:
       - targets: ["host.docker.internal:8081"]
     # přepis globálního nastavení
     scrape_interval: 5s
+
+  - job_name: "samples"
+    static_configs:
+      # domený nebo IP adresy odkud se budou metriky sbírat
+      - targets: ["host.docker.internal:5263"]
+    # přepis globálního nastavení
+    scrape_interval: 10s

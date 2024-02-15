@@ -1,0 +1,6 @@
+@MetricsSample_HostAddress = http://localhost:5263
+
+GET {{MetricsSample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

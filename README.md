@@ -86,3 +86,18 @@ Vytvoření prostředí pro simulaci provozu:
     * "_gauge" => stavové hodnoty, mužou se zvětsovat i zmenšovat, např. procento využití RAM, CPU,...
     * "_duration_seconds" => pro histogramy, např. doba zpracování funkce, requestu,...
 
+## .NET aplikace
+
+* nuget balíček [Prometheus.Client](https://github.com/prom-client-net/prom-client?tab=readme-ov-file)
+* konfigurace Program.cs
+* nastavení metrik v endpointech HelperExtensions
+* připojení do Promethea - nový job
+* napojení v Grafana
+
+## NEXT řešení
+
+* vytížení CPU
+* spotřeba RAM
+* statistika dlouhotrvající requestů
+* počty HTTP chyb s možností rozdělení dle stavového kódu
+* nasazeno Polabské a Bohušovice
