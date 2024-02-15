@@ -1,10 +1,16 @@
-services:
+version: '3'
 
+networks:
+  fullcom:
+    external: true
+
+services:
   nginx-proxy:  
     container_name: nginx-proxy
     image: nginx:latest
     ports:
       - 8080:80
+      - 8081:80
       #- 443:443
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
@@ -12,7 +18,7 @@ services:
       #- ./ssl/:/ssl/
       #- ./psw/:/psw/
     networks:
-      - pilif-net
+      - fullcom
       
 #  nginx-metrics:
 #    container_name: nginx-metrics
@@ -23,7 +29,7 @@ services:
 #      - -nginx.scrape-uri
 #      - http://nginx-proxy/basic_status
 #    networks:
-#      - pilif-net
+#      - fullcom
   
   prometheus:
     container_name: prometheus
@@ -34,9 +40,19 @@ services:
       - ./prometheus/conf/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
     ports:
       - 9090:9090
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
-      - pilif-net 
-     
-networks:
-  pilif-net:
-    driver: bridge       
+      - fullcom
+
+  grafana:
+    container_name: "grafana"
+    image: grafana/grafana:8.5.27
+    ports:
+      - 3000:3000
+    env_file:
+      - 'env.grafana'
+    # volumes:
+    #   - ./grafana/etc/grafana.ini:/etc/grafana/grafana.ini
+    networks:
+      - fullcom
