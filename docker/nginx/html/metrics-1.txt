@@ -1,0 +1,4 @@
+# Gauge
+workshop_long_running 15
+# Counter
+workshop_visit_count_totak 547

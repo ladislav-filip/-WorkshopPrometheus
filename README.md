@@ -36,6 +36,9 @@ Mimo zde přezentované Grafany a Promethea
 * má řadu napojení na datové zdroje (Oracle, MySQL, Influx, API,...)
 * jako cílovku zde vidím vizualizaci metrik, nebo vizualizaci statistik či nabíranýc dat od běžících strojů/čidel
 
+# Docker zprovoznění
+
+
 
 
 

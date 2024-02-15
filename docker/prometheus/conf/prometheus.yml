@@ -1,0 +1,20 @@
+global:
+  scrape_interval: 15s 
+  evaluation_interval: 15s 
+
+  external_labels:
+    monitor: "codelab-monitor"
+
+scrape_configs:
+  - job_name: "prometheus"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["host.docker.internal:9090"]
+        
+  - job_name: "workshop-1"
+    metrics_path: "/metrics-1.txt"
+    static_configs:
+      - targets: ["nginx-proxy"]
