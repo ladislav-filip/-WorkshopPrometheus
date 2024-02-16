@@ -1,5 +1,5 @@
 # Prometheus a Grafana pro NEXT a nejen pro něj
-
+Video: https://drive.google.com/file/d/189XdNZ_ynrfA05kORYxcwW9buiu_CEtu/view?usp=drive_link
 
 ## Monitoring - potřeby
 
