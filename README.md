@@ -3,7 +3,7 @@
 
 ## Monitoring - potřeby
 
-* znát chování apliace/řešení z vyššího pohledu
+* znát chování aplikace/řešení z vyššího pohledu
 * logování je pro tento účel příliš detailní
 * potřeba monitorovat nejen aplikaci, ale i prostředky
 * potřeba monitovovat ne události, ale procesy (např. počty odeslanýc mailů za nějaký interval)
@@ -72,9 +72,18 @@ Vytvoření prostředí pro simulaci provozu:
 
 ## Prometheus detail
 
+* široce používaný a společně s OpenTelemetry takový standard
+* existuje na to spousta dokumentace
+* velká podpora napříč technologiemi (.NET, Java, Go, Java)
+* velice jednoduchá implementace
+* podpora a vhodnost použití v cloudu a kontejnerech
+
+### Vlastnosti
+
 * funguje jako sběrač - pull metrik s kientů
 * formát metrik je čistý plaintext
 * metriky jsou ve tvaru klíč/hodnota
+* data ukládá pouze krátkodobě, defaul je 15 dnů
 * konvence pojmenování metrik:
   * slova se oddělují podtržítkem
   * používají se malá písmena
@@ -85,6 +94,23 @@ Vytvoření prostředí pro simulaci provozu:
     * "_total" => sumarizační hodnoty, např. počet requestů, hodnota pouze roste
     * "_gauge" => stavové hodnoty, mužou se zvětsovat i zmenšovat, např. procento využití RAM, CPU,...
     * "_duration_seconds" => pro histogramy, např. doba zpracování funkce, requestu,...
+
+### Rozšíření
+
+* Grafana - vizualizace dat
+* Alertmanager - nástroj pro rozesílání upozornění
+* Thanos - umožní dlouhodobé ukládání dat
+
+### Exportery
+
+* slouží pro sběr metrik tam, kde není přímá implementace
+* existuje exportery snad na všechno
+* sbírají data a převádějí jej do formátu čitelného pro Prometheus
+* zajímávé exportery pro nás:
+  * [Oracle DB Exporter](https://github.com/iamseth/oracledb_exporter) - umožní sledovat podrobné vytížení
+  * [MySQL server Exporter](https://github.com/prometheus/mysqld_exporter)
+  * [Node Exporter](https://github.com/prometheus/node_exporter) - poskytuje metriky HW/OS, jsko CPU, RAM,...
+  * [Prometheus Tomcat Exporter](https://github.com/nlighten/tomcat_exporter) - exporter pro Apache Tomcat, tedy možnost pro Uniface
 
 ## .NET aplikace
 
